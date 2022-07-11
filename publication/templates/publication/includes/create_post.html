@@ -1,0 +1,26 @@
+{% load static %}
+
+<div id="cp-wrap" class="cp-wrap cp-hide">
+    <div class="main_page_alert-top-side cp-title">
+        <h2>New publication</h2>
+        <button id="cp_close" class="alert_close">
+            <img src="{% static 'img/close.svg' %}" alt="">
+        </button>
+    </div>
+    <div class="cp-text-wrap">
+        <div id="cp-imgs" class="cp-imgs">
+
+        </div>
+        <textarea class="cp-text"></textarea>
+    </div>
+    <div class="cp-btns">
+        <input type="file" id="cp_imgs_input" multiple style="display: none">
+        <button id="cp-images" class="cp-images">
+            <img src="{% static 'img/cp_images.svg' %}" alt="">
+        </button>
+        <div class="img-count-wrap">Number of images: <div id="img-count">0</div></div>
+        <button class="cp-confirm-btn">
+            Create
+        </button>
+    </div>
+</div>

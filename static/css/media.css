@@ -1,0 +1,64 @@
+@media (max-width: 1700px) {
+    header{
+        height: 50px;
+    }
+
+    .logo{
+        font-size: 26px;
+    }
+
+    .header-search-wrap input{
+        height: 35px;
+    }
+
+    .header-search-wrap img{
+        height: 60%;
+    }
+
+    .header-nuttons a{
+        font-size: 18px;
+    }
+
+    #notfc-amount{
+        font-size: 18px;
+        width: 23px;
+    }
+
+    #menu-btn img{
+        height: 22px;
+    }
+
+    .header-profile-wrap{
+        height: 35px;
+    }
+
+    .header-profile-username span{
+        font-size: 18px;
+        /* line-height: 18px; */
+    }
+
+    .header-profile-img{
+        height: 35px;
+        width: 35px;
+    }
+
+    .menu-panel{
+        top: 50px;
+    }
+
+    .menu-panel a{
+        font-size: 18px;
+    }
+
+    .pub-panel a{
+        font-size: 18px;
+    }
+
+    .content{
+        margin-top: 50px;
+    }
+
+    .pub-content-wrap{
+        font-size: 16px;
+    }
+}

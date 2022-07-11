@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Publication{% endblock title %}
+
+{% block content %}
+<div id="pub-menu-panel-bg" class="pub-menu-panel-bg panel-hide"></div>
+
+<div class="pub-detail-wrap">
+    <div class="slider">
+        <div class="slider__container">
+            <div class="slider__wrapper">
+                <div class="slider__items">
+                    <div class="slider__item">
+                        <img class="pub-d-img" src="{% static 'img/p1.jpg' %}" alt="">
+                    </div>
+                    <div class="slider__item">
+                        <img class="pub-d-img" src="{% static 'img/p5.jpg' %}" alt="">
+                    </div>
+                    <div class="slider__item">
+                        <img class="pub-d-img" src="{% static 'img/p4.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img id="l-control" class="slider__control" data-slide="prev" src="{% static 'img/a-left.svg' %}" alt="">
+        <img id="r-control" class="slider__control" data-slide="next" src="{% static 'img/a-right.svg' %}" alt="">
+    </div>
+    
+    <div class="pub-detail">
+        <div class="top-side ts-detail">
+            <div class="pub-profile">
+                <div class="pub-profile-img">
+                    <img src="{% static 'img/p4.jpg' %}" alt="">
+                </div>
+                <div class="pub-profile-username">
+                    renxob
+                </div>
+            </div>
+            <div class="pub-menu-wrap">
+                <button class="pub-menu-btn">
+                    <img src="{% static 'img/menu_1.svg' %}" alt="">
+                </button>
+                <div class="pub-panel pub-panel-detail panel-menu-hide">
+                    <a>Copy url</a>
+                    <a>Copy id</a>
+                    <a href="">Edit</a>
+                    <a>Add to bookmarks</a>
+                </div>
+            </div>
+        </div>
+        <div class="pub-content-wrap">
+            <div class="s-text">
+                It is a long established fact that a reader 
+                will be distracted by the readable content of a 
+                page when looking at its layout. The point of 
+                using Lorem Ipsum is that it has a more-or-less 
+                normal distribution of letters, as opposed to using 
+                'Content here, content here', making it look like readable 
+                English. Many desktop publishing packages and web page 
+                English. Many desktop publishing packages and web page 
+                editors now use Lorem Ipsum as their default model text.
+            </div>
+        </div>
+        <div class="bottom-side bottom-side-detail">
+            <div class="bottom-side-btns">
+                <div class="bottom-side-btn-wrap">
+                    <button class="bottom-side-btn like_btn"><img class="like-img" src="{% static 'img/dont_like.svg' %}" alt=""><div class="num-of-likes dont_like">435</div></button>
+                </div>
+                <div class="bottom-side-btn-wrap">
+                    <button class="bottom-side-btn"><img src="{% static 'img/comment.svg' %}" alt=""><div class="num-of">34</div></button>
+                </div>
+                <div class="bottom-side-btn-wrap">
+                    <button class="bottom-side-btn repost_btn"><img src="{% static 'img/repost.svg' %}" alt=""><div class="num-of">34</div></button>
+                </div>
+                <div class="pub-date-id">
+                    <div class="pub-id">*<div>23V32B</div></div>
+                    <div class="pub-date">02.05.2022</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pub-comments-wrap">
+        <form id="create_comment_form" action="">
+            <textarea placeholder="Create a comment..."></textarea>
+            <button id="send_comment_btn">Send</button>
+        </form>
+        <div class="pub-comments-list">
+            <div class="comment">
+                <div class="comment-profile">
+                    <div class="comment-profile-avatar">
+                        <img src="{% static 'img/p5.jpg' %}" alt="">
+                    </div>
+                    <div class="comment-profile-username">
+                        tesss
+                    </div>
+                </div>
+                <div class="comment-text">
+                    It is a long established fact that a reader 
+                    will be distracted by the readable content of 
+                    a page when looking at its layout. The point of 
+                    using Lorem Ipsum is that it has a more-or-less
+                </div>
+                <div class="bottom-side-btns">
+                    <div class="bottom-side-btn-wrap">
+                        <button class="bottom-side-btn like_btn"><img class="like-img comm-pub-img" src="{% static 'img/dont_like.svg' %}" alt=""><div class="num-of-likes dont_like">435</div></button>
+                    </div>
+                    <button class="bottom-side-btn btn-reply"><p class="bsb-text">reply(24)</p></button>
+                </div>
+            </div>
+            <div class="comment c-child">
+                <div class="comment-profile">
+                    <div class="comment-profile-avatar">
+                        <img src="{% static 'img/p5.jpg' %}" alt="">
+                    </div>
+                    <div class="comment-profile-username">
+                        tesss
+                    </div>
+                </div>
+                <div class="comment-text">
+                    <span class="reply-user">@tess</span> It is a long established fact that a reader 
+                    will be distracted by the readable content of 
+                    a page when looking at its layout. The point of 
+                    using Lorem Ipsum is that it has a more-or-less
+                </div>
+                <div class="bottom-side-btns">
+                    <div class="bottom-side-btn-wrap">
+                        <button class="bottom-side-btn like_btn"><img class="like-img comm-pub-img" src="{% static 'img/dont_like.svg' %}" alt=""><div class="num-of-likes dont_like">435</div></button>
+                    </div>
+                    <button class="bottom-side-btn btn-reply"><p class="bsb-text bsb-text-child">reply(24)</p></button>
+                </div>
+            </div>
+            <div class="comment c-child">
+                <div class="comment-profile">
+                    <div class="comment-profile-avatar">
+                        <img src="{% static 'img/p5.jpg' %}" alt="">
+                    </div>
+                    <div class="comment-profile-username">
+                        tesss
+                    </div>
+                </div>
+                <div class="comment-text">
+                    It is a long established fact that a reader 
+                    will be distracted by the readable content of 
+                    a page when looking at its layout. The point of 
+                    using Lorem Ipsum is that it has a more-or-less
+                </div>
+                <div class="bottom-side-btns">
+                    <div class="bottom-side-btn-wrap">
+                        <button class="bottom-side-btn like_btn"><img class="like-img comm-pub-img" src="{% static 'img/dont_like.svg' %}" alt=""><div class="num-of-likes dont_like">435</div></button>
+                    </div>
+                    <button class="bottom-side-btn btn-reply"><p class="bsb-text bsb-text-child">reply(24)</p></button>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-profile">
+                    <div class="comment-profile-avatar">
+                        <img src="{% static 'img/p5.jpg' %}" alt="">
+                    </div>
+                    <div class="comment-profile-username">
+                        tesss
+                    </div>
+                </div>
+                <div class="comment-text">
+                    It is a long established fact that a reader 
+                    will be distracted by the readable content of 
+                    a page when looking at its layout. The point of 
+                    using Lorem Ipsum is that it has a more-or-less
+                </div>
+                <div class="bottom-side-btns">
+                    <div class="bottom-side-btn-wrap">
+                        <button class="bottom-side-btn like_btn"><img class="like-img comm-pub-img" src="{% static 'img/dont_like.svg' %}" alt=""><div class="num-of-likes dont_like">435</div></button>
+                    </div>
+                    <button class="bottom-side-btn btn-reply"><p class="bsb-text">reply(24)</p></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+{% block script %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const slider = new ChiefSlider('.slider', {
+            loop: false
+        });
+    });
+    let imgs = document.getElementsByClassName('pub-d-img');
+    for (let i = 0; i < imgs.length; i++) {
+        let ss = imgs[i].src;
+        let b = new Image;
+        b.src = ss;
+        if (b.width > 1000) {
+            imgs[i].style.width = '100%';
+        }
+    }
+    if(document.getElementsByClassName('like-btn-wrap')){
+        let like_btns = document.getElementsByClassName('like_btn');
+        let num_of_likes = document.getElementsByClassName('num-of-likes');
+        for (let i = 0; i < like_btns.length; i++) {
+            like_btns[i].onclick = function(){
+                if(num_of_likes[i].classList.contains('dont_like')){
+                    document.getElementsByClassName('like-img')[i].src = `{% static 'img/like.svg' %}`;
+                    num_of_likes[i].classList.remove('dont_like');
+                    num_of_likes[i].classList.add('like');
+                    num = parseInt(num_of_likes[i].innerHTML);
+                    num ++;
+                    num_of_likes[i].innerHTML = num;
+                }
+                else{
+                    document.getElementsByClassName('like-img')[i].src = `{% static 'img/dont_like.svg' %}`;
+                    num_of_likes[i].classList.remove('like');
+                    num_of_likes[i].classList.add('dont_like');
+                    num = parseInt(num_of_likes[i].innerHTML);
+                    num --;
+                    num_of_likes[i].innerHTML = num;
+                }
+            }       
+        }
+    }
+</script>
+{% endblock script %}
