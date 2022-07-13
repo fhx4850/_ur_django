@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
+
+{% block content %}
+
+<div class="auth-container">
+  <div class="auth-fields">
+    <h1>{% trans "Sign In" %}</h1>
+
+    {% get_providers as socialaccount_providers %}
+    <form class="authForm" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="submit-auth-btn submitBtn" type="submit">{% trans "Sign In" %}</button>
+      <a class="secondaryAction" id="forgotPass" href="{% url 'account_reset_password' %}">{% trans "ForgotPassword?" %}</a>
+      <p>{% blocktrans with site.name as site_name %}
+      <a class="secondaryAction" href="{{ signup_url }}">Sign up</a>{% endblocktrans %}</p>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

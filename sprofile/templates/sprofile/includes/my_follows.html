@@ -1,0 +1,21 @@
+{% load static %}
+<div id="follows_panel" class="follows-wrap panel-hide">
+    <div class="main_page_alert-top-side cp-title">
+        <h2>My follows</h2>
+        <button id="my_follows_close" class="alert_close">
+            <img src="{% static 'img/close.svg' %}" alt="">
+        </button>
+    </div>
+    <div class="follow-list">
+        {% for follow in follows %}
+        <a href="{{ follow.get_absolute_url }}" class="follow-item">
+            <div class="follow-img">
+                <img src="{{ follow.pm_avatar.url }}" alt="">
+            </div>
+            <div class="follow-username">
+                {{ follow.pm_user.username }}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>

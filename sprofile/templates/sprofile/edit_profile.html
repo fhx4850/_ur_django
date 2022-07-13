@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit profile{% endblock title %}
+{% block header %}
+{% include 'includes/header.html' %}
+{% endblock header %}
+
+{% block content %}
+<form class="edit-profile-wrap" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="profile_id" value="{{ profile.id }}">
+    <div class="edit-profile-title">
+        Base
+    </div>
+    <div class="ep-item ep-avatar">
+        <div class="ep-item-title">
+            Avatar
+        </div>
+        <!-- <input name="pm_avatar" type="file" accept="image/jpeg, image/png" value="{{ profile.pm_avatar.url }}"> -->
+        {{ form.pm_avatar }}
+        <div class="ep-avatar-delete">
+            <label for="avatar-delete">Delete avatar</label>
+            <input id="avatar-delete" name="delete_avatar" type="checkbox">
+        </div>
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            Name
+        </div>
+        {{ form.pm_name }}
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            Description
+        </div>
+        {{ form.pm_description }}
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            Kind of activity
+        </div>
+        {{ form.pm_kind_of_activity }}
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            Interests
+        </div>
+        {{ form.pm_interests }}
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            Place of work
+        </div>
+        {{ form.pm_place_of_work }}
+    </div>
+    <div class="edit-profile-title">
+        Social
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            GitHub
+        </div>
+        <input name="psm_github" type="text" value="{{ profile.profilesocialmodel.psm_github }}">
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            Twitter
+        </div>
+        <input name="psm_twitter" type="text" value="{{ profile.profilesocialmodel.psm_github }}">
+    </div>
+    <div class="ep-item">
+        <div class="ep-item-title">
+            Linkedin
+        </div>
+        <input name="psm_linkedin" type="text" value="{{ profile.profilesocialmodel.psm_github }}">
+    </div>
+    <button id="save-profile-edit">Save</button>
+</form>
+{% endblock content %}

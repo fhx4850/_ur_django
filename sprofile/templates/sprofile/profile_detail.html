@@ -1,45 +1,69 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load sprofiletags %}
 {% block title %}Profile{% endblock title %}
+
+{% block header %}
+{% include 'includes/header.html' %}
+{% endblock header %}
+
 {% block content %}
 <div id="pub-menu-panel-bg" class="pub-menu-panel-bg panel-hide"></div>
 <div class="profle-detail-wrap">
     <div class="pd-body">
         <div class="pd-img-wrap">
-            <img src="{% static 'img/a1.jpg' %}" alt="">
+            <img src="{{ profile.pm_avatar.url }}" alt="">
         </div>
         <div class="r-pd">
             <div class="r-pd-top">
-                <div class="pd-username">renxob</div>
+                <div class="pd-username">{{ profile.pm_user.username }}</div>
                 <div class="pub-menu-wrap">
                     <button class="pub-menu-btn">
                         <img src="{% static 'img/menu_1.svg' %}" alt="">
                     </button>
                     <div class="pub-panel panel-menu-hide">
-                        <a>Copy url</a>
-                        <a>Copy id</a>
-                        <a href="">Edit</a>
-                        <a>Add to bookmarks</a>
+                        <a id="copy-profile-url">Copy url</a>
                     </div>
                 </div>
             </div>
-            <div class="r-pd-btns">
-                <button id="btn-follow">
-                    Follow
-                </button>
-                <button id="show-detail-btn">
+            <form id="btn-form" class="r-pd-btns">
+                {% csrf_token %}
+                {% if user.username == profile.pm_user.username %}
+                    <button id="btn-edit">
+                        <a href="{{ profile.get_edit_url }}">Edit</a>
+                    </button>
+                {% else %}
+                    <input type="hidden" name="follow_id" value="{{ profile.id }}">
+                    {% check_follow user profile.id as check %}
+                    {% if check %}
+                        <button type="submit" id="btn-follow" class="not-follow follow">
+                            Followed
+                        </button>
+                    {% else %}
+                        <button type="submit" id="btn-follow" class="not-follow">
+                            Follow
+                        </button>
+                    {% endif %}
+                {% endif %}
+                <button type="button" id="show-detail-btn">
                     Show detail information
                 </button>
-                <a href="#">
-                    <img src="{% static 'img/github.svg' %}" alt="">
-                </a>
-                <a href="#">
+                {% if profile.profilesocialmodel.psm_github %}
+                    <a href="{{ profile.profilesocialmodel.psm_github }}">
+                        <img src="{% static 'img/github.svg' %}" alt="">
+                    </a>
+                {% endif %}
+                {% if profile.profilesocialmodel.psm_twitter %}
+                <a href="{{ profile.profilesocialmodel.psm_twitter }}">
                     <img src="{% static 'img/twitter.svg' %}" alt="">
                 </a>
-                <a href="#">
-                    <img src="{% static 'img/linkedin.svg' %}" alt="">
-                </a>
-            </div>
+                {% endif %}
+                {% if profile.profilesocialmodel.psm_linkedin %}
+                    <a href="{{ profile.profilesocialmodel.psm_linkedin }}">
+                        <img src="{% static 'img/linkedin.svg' %}" alt="">
+                    </a>
+                {% endif %}
+            </form>
         </div>
     </div>
     <div id="pd-info" class="pd-info pdi-hide">
@@ -50,7 +74,7 @@
                     Name
                 </div>
                 <div class="pd-info-item-content">
-                    Jhon
+                    {{ profile.pm_name }}
                 </div>
             </div>
         </div>
@@ -61,7 +85,7 @@
                     Description
                 </div>
                 <div class="pd-info-item-content">
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has
+                    {{ profile.pm_description }}
                 </div>
             </div>
         </div>
@@ -72,7 +96,7 @@
                     Kind of activity
                 </div>
                 <div class="pd-info-item-content">
-                    It is a long established fact that.
+                    {{ profile.pm_kind_of_activity }}
                 </div>
             </div>
         </div>
@@ -83,7 +107,7 @@
                     Interests
                 </div>
                 <div class="pd-info-item-content">
-                    It is a long established fact that.
+                    {{ profile.pm_interests }}
                 </div>
             </div>
         </div>
@@ -94,7 +118,7 @@
                     Place of work
                 </div>
                 <div class="pd-info-item-content">
-                    It is a long established fact that.
+                    {{ profile.pm_place_of_work }}
                 </div>
             </div>
         </div>
@@ -104,7 +128,6 @@
 <div class="profile-search-place">
     <div class="profile-search-wrap">
         <input type="text">
-        <!-- <img src="{% static 'img/search.svg' %}" alt=""> -->
         <button id="search-profile-btn">Search</button>
     </div>
 </div>
@@ -192,6 +215,30 @@
             }       
         }
     }
+    document.getElementById('btn-follow').onclick = function(){
+        document.getElementById('btn-follow').classList.toggle('follow');
+        if(document.getElementById('btn-follow').classList.contains('follow')){
+            document.getElementById('btn-follow').innerHTML = 'Followed';
+        }
+        else{
+            document.getElementById('btn-follow').innerHTML = 'Follow';
+        }
+    }
+
+    $('#btn-form').submit(function(e){
+        e.preventDefault();
+        let form_data = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "{% url 'profile' profile.pm_url %}",
+            data: form_data,
+            success: function(){
+
+            }
+        });
+    });
+
+
 </script>        
 {% endblock script %}
 </script>   
